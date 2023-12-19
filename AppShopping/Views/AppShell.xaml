@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AppShopping.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cinema="clr-namespace:AppShopping.Views.Cinemas"
+    xmlns:restaurants="clr-namespace:AppShopping.Views.Restaurants"
+    xmlns:stores="clr-namespace:AppShopping.Views.Stores"
+    xmlns:tickets="clr-namespace:AppShopping.Views.Tickets"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <ShellContent
+            Title="Lojas"
+            ContentTemplate="{DataTemplate stores:ListPageStores}"
+            Icon="shop.png"
+            Route="stores" />
+        <ShellContent
+            Title="Restaurantes"
+            ContentTemplate="{DataTemplate restaurants:ListPageRestaurants}"
+            Icon="food.png"
+            Route="restaurants" />
+        <ShellContent
+            Title="Cinema"
+            ContentTemplate="{DataTemplate cinema:ListPageCinema}"
+            Icon="cinema.png"
+            Route="cinemas" />
+        <ShellContent
+            Title="Ticket"
+            ContentTemplate="{DataTemplate tickets:ScanPage}"
+            Icon="receipt.png"
+            Route="tickets" />
+    </TabBar>
+
+</Shell>

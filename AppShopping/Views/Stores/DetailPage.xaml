@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppShopping.Views.Stores.DetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AppShopping.ViewsModels.Stores"
+    Title="{Binding Estabilishment.Name}"
+    BackgroundColor="#fff">
+    <ContentPage.BindingContext>
+        <vm:StoreDetailPageViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <Grid>
+            <Image
+                SemanticProperties.Hint="Imagem de fundo do estabelecimento"
+                Source="{Binding Estabilishment.Cover}"
+                VerticalOptions="Start" />
+            <Image
+                Margin="20"
+                HorizontalOptions="Start"
+                SemanticProperties.Hint="Botão de voltar"
+                Source="arrow.png"
+                VerticalOptions="Start"
+                WidthRequest="32">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackListStorePageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Border
+                Margin="0,200,0,0"
+                Background="White"
+                StrokeShape="RoundRectangle 30, 30, 0, 0"
+                StrokeThickness="0">
+                <Grid
+                    Padding="20"
+                    ColumnDefinitions="1*, 1*, 5*"
+                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+                    <Image
+                        Grid.ColumnSpan="2"
+                        Margin="10,0"
+                        SemanticProperties.Hint="{Binding Estabilishment.Name, StringFormat='Logotipo da loja {0}'}"
+                        Source="{Binding Estabilishment.Logo}"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Column="2"
+                        Margin="40,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        SemanticProperties.HeadingLevel="Level1"
+                        Text="{Binding Estabilishment.Name}"
+                        TextColor="#000"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        Margin="0,30"
+                        Text="{Binding Estabilishment.Description}"
+                        TextColor="#A0A0A0" />
+                    <Image
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Source="pin.png"
+                        
+                        WidthRequest="21" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Localização"
+                        TextColor="#000" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding Estabilishment.Localization}"
+                        TextColor="#000" />
+                    <Image
+                        Grid.Row="4"
+                        Grid.RowSpan="2"
+                        Source="phone.png"
+                        VerticalOptions="End"
+                        WidthRequest="30" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0,40,0,0"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Telefone"
+                        TextColor="#000" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding Estabilishment.Phone}"
+                        TextColor="#000" />
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollView>
+</ContentPage>

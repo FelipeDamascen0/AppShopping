@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppShopping.Views.Cinemas.DetailPageMovie"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:media="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:AppShopping.ViewsModels.Cinemas"
+    Title="DetailPageMovie"
+    
+    BackgroundColor="#fff">
+    <ContentPage.BindingContext>
+        <vm:DetailPageMovieViewModel />
+    </ContentPage.BindingContext>
+    <Grid>
+        <Image
+            x:Name="ImageMovie"
+            Source="{Binding Movie.Cover}"
+            VerticalOptions="Start" />
+        <media:MediaElement
+            x:Name="MediaTrailer"
+            HeightRequest="270"
+            ShouldShowPlaybackControls="False"
+            Source="{Binding Movie.Trailer}"
+            VerticalOptions="Start" />
+        <Image
+            x:Name="play"
+            Margin="0,100,0,0"
+            Source="play.png"
+            VerticalOptions="Start"
+            WidthRequest="50">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="PlayPause" />
+            </Image.GestureRecognizers>
+        </Image>
+
+
+        <Image
+            Margin="15"
+            HorizontalOptions="Start"
+            Source="close.png"
+            VerticalOptions="Start"
+            WidthRequest="29">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding BackToListPageMoviesCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Border
+            Margin="15"
+            Padding="10,3"
+            BackgroundColor="#DDb3b3b3"
+            HeightRequest="28"
+            HorizontalOptions="End"
+            StrokeShape="RoundRectangle 30"
+            VerticalOptions="Start"
+            WidthRequest="82">
+            <HorizontalStackLayout Spacing="5" VerticalOptions="Start">
+                <Image Source="clock.png" WidthRequest="19" />
+                <Label
+                    HorizontalOptions="End"
+                    Text="{Binding Movie.Duration}"
+                    TextColor="#000"
+                    VerticalOptions="Start" />
+            </HorizontalStackLayout>
+        </Border>
+        <Border
+            Margin="0,220,0,0"
+            Padding="30"
+            BackgroundColor="#FFF"
+            StrokeShape="RoundRectangle 30,30,0,0"
+            StrokeThickness="0">
+            <VerticalStackLayout>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="19"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Movie.Name}"
+                    TextColor="#000"
+                    VerticalOptions="Center" />
+                <Label
+                    Margin="0,35,0,0"
+                    HorizontalOptions="Center"
+                    Text="{Binding Movie.Description}"
+                    TextColor="#A0A0A0" />
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>

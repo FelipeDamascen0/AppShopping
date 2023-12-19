@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppShopping.Views.Tickets.ScanPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maui="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:AppShopping.ViewsModels.Tickets"
+    Title="ScanPage"
+    BackgroundColor="#FFF">
+    <ContentPage.BindingContext>
+        <vm:ScanPageViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Padding="25">
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            Text="Pague o Seu"
+            TextColor="Black"
+            VerticalOptions="Center" />
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            Text="ESTACIONAMENTO"
+            TextColor="Orange" />
+        <Border
+            Margin="0,20,0,0"
+            Stroke="Black"
+            StrokeShape="RoundRectangle 5"
+            StrokeThickness="1">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ScanCommand}" />
+            </Border.GestureRecognizers>
+            <StackLayout Orientation="Horizontal">
+                <Entry
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Escanear ticket"
+                    Text="{Binding TicketNumber}"
+                    TextColor="#000">
+                    <Entry.Behaviors>
+                        <maui:EventToCommandBehavior Command="{Binding CheckTicketNumberCommand}" EventName="TextChanged" />
+                        <maui:MaskedBehavior Mask="XXX.XXX.XXX.XXX" />
+                    </Entry.Behaviors>
+                </Entry>
+                <Image
+                    Margin="0,0,15,0"
+                    Source="camera.png"
+                    VerticalOptions="Center"
+                    WidthRequest="37" />
+            </StackLayout>
+        </Border>
+        <Border
+            Margin="0,20"
+            HeightRequest="50"
+            StrokeShape="RoundRectangle 30"
+            StrokeThickness="0"
+            VerticalOptions="EndAndExpand"
+            WidthRequest="300">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ListCommand}" />
+            </Border.GestureRecognizers>
+            <Button
+                BackgroundColor="#FF5524"
+                Command="{Binding ListCommand}"
+                HeightRequest="50"
+                Text="Tickets pagos"
+                TextColor="#FFF"
+                WidthRequest="300" />
+        </Border>
+    </StackLayout>
+</ContentPage>
